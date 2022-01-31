@@ -14,7 +14,11 @@ export function* signUpWithEmail() {
         const { username, password } = payload;
 
         try {
-            new AuthApi().auth({username, password, authType: AuthType.Standard})
+            const results = yield call(new AuthApi().auth({username, password, authType: AuthType.Standard}));
+            console.log('results');
+            console.log(results)
+            // const user = new AuthApi().auth({username, password, authType: AuthType.Standard});
+
             yield put(showAuthMessage('saga working'));
         } catch (error) {
             yield put(showAuthMessage(error));
