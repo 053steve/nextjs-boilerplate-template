@@ -10,7 +10,10 @@ const initState: AppState = {
     token: (typeof window !== 'undefined') ? localStorage.getItem(AUTH_TOKEN) : "",
 };
 
+
+
 const auth = (state = initState, action: any): AppState => {
+
     switch (action.type) {
         case actionTypes.AUTHENTICATED:
             return {
@@ -18,6 +21,10 @@ const auth = (state = initState, action: any): AppState => {
                 loading: false,
                 redirect: "/",
                 token: action.token,
+            };
+        case actionTypes.SIGNIN:
+            return {
+                ...state
             };
         case actionTypes.SHOW_AUTH_MESSAGE:
             return {

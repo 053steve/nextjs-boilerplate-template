@@ -8,8 +8,9 @@ import {
 } from "../actions/auth";
 
 export function* signUpWithEmail() {
-    yield takeEvery(actionTypes.SIGNUP, function* ({ payload }) {
+    yield takeEvery(actionTypes.SIGNIN, function* ({ payload }) {
         const { email, password } = payload;
+
         try {
             yield put(showAuthMessage('saga working'));
         } catch (error) {

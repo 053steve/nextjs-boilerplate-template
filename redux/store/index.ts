@@ -17,6 +17,7 @@ const bindMiddleware = (middleware: Middleware[]): StoreEnhancer => {
 export const makeStore: MakeStore<AppState> = () => {
     const sagaMiddleware = createSagaMiddleware();
 
+
     const store = createStore(rootReducer, bindMiddleware([sagaMiddleware]));
     (store as any).sagaTask = sagaMiddleware.run(rootSaga);
     return store;

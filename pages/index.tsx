@@ -1,12 +1,23 @@
 import type { NextPage } from 'next'
 import {FormEvent} from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { signIn } from '../redux/actions/auth';
+import {AppState} from "../interfaces/data.interface";
 
-const onSignin = (e: FormEvent): void => {
-    e.preventDefault();
-    console.log('login');
-};
+
 
 const Home: NextPage = () => {
+
+
+    const dispatch = useDispatch();
+
+    const onSignin = (e: FormEvent): void => {
+        e.preventDefault();
+        dispatch(signIn({user: 'yo', password: 'yeah'}));
+    };
+
+
+
   return (
       <div className="w-full min-h-screen bg-gray-50 flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
           <div className="w-full sm:max-w-md p-5 mx-auto">
