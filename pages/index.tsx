@@ -13,7 +13,7 @@ const Home: NextPage = () => {
 
     const onSignin = (e: FormEvent): void => {
         e.preventDefault();
-        dispatch(signIn({username: '053steve', password: 'hello1234!'}));
+        dispatch(signIn({username: '053steve', password: 'Hello1234!'}));
     };
 
 

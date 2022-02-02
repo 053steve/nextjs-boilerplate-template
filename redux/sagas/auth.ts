@@ -1,25 +1,31 @@
 import { all, takeEvery, put, fork, call } from "redux-saga/effects";
 import {actionTypes} from '../constants/actions'
-import {AuthApi, AuthType} from '../../client/api';
+import {AUTH_TOKEN} from '../../constants';
+import {AuthApi, AuthType, AuthApiFactory} from '../../client/api';
 import {
     // authenticated,
     // signOutSuccess,
-    // signUpSuccess,
+    signUpSuccess,
     showAuthMessage
 } from "../actions/auth";
+import axios from "axios";
+import httpService from "../../services/http.service";
 
-export function* signUpWithEmail() {
+const authApi = new httpService().interceptorMiddleware(AuthApiFactory);
+
+export function* signInWithEmail() {
 
     yield takeEvery(actionTypes.SIGNIN, function* ({ payload }) {
         const { username, password } = payload;
 
         try {
-            const results = yield call(new AuthApi().auth({username, password, authType: AuthType.Standard}));
-            console.log('results');
-            console.log(results)
-            // const user = new AuthApi().auth({username, password, authType: AuthType.Standard});
 
-            yield put(showAuthMessage('saga working'));
+            const result = yield call(authApi.auth, {username, password, authType: AuthType.Standard});
+
+            console.log(result);
+            // localStorage.setItem(AUTH_TOKEN, user.user.uid);
+            yield put(signUpSuccess('saga working'));
+
         } catch (error) {
             yield put(showAuthMessage(error));
         }
@@ -28,6 +34,6 @@ export function* signUpWithEmail() {
 
 export default function* rootSaga() {
     yield all([
-        fork(signUpWithEmail),
+        fork(signInWithEmail),
     ]);
 }
