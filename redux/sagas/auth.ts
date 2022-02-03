@@ -9,9 +9,9 @@ import {
     showAuthMessage
 } from "../actions/auth";
 import axios from "axios";
-import httpService from "../../services/http.service";
+import ApiService from '../../services/api.service';
 
-const authApi = new httpService().interceptorMiddleware(AuthApiFactory);
+const apiService = new ApiService();
 
 export function* signInWithEmail() {
 
@@ -20,7 +20,8 @@ export function* signInWithEmail() {
 
         try {
 
-            const result = yield call(authApi.auth, {username, password, authType: AuthType.Standard});
+            const authService = apiService.authService();
+            const result = yield call(authService.auth, {username, password, authType: AuthType.Standard});
 
             console.log(result);
             // localStorage.setItem(AUTH_TOKEN, user.user.uid);
