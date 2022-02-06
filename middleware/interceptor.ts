@@ -8,7 +8,7 @@ export const requestInterceptor = (config: any) => {
 
 export const responseInterceptor = (response: any) => {
     if (response?.status === 200 || response?.status === 201) {
-        return response.data;
+        return response.data.payload;
     }
 
     throw new Error(response.message);

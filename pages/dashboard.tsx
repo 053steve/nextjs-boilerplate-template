@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import AdminLayout from '../components/admin-layout';
+import AdminLayout from '../layouts/admin-layout';
 
 const Dashboard = () => {
   return (

@@ -3,7 +3,7 @@ import {FormEvent} from "react";
 import {useSelector, useDispatch} from 'react-redux';
 import {signIn} from '../redux/actions/auth';
 import {AppState} from "../interfaces/data.interface";
-import MainLayout from '../components/main-layout';
+import MainLayout from '../layouts/main-layout';
 
 
 const Home = () => {
@@ -13,7 +13,7 @@ const Home = () => {
 
   const onSignin = (e: FormEvent): void => {
     e.preventDefault();
-    dispatch(signIn({username: '053steve', password: 'hello1234!'}));
+    dispatch(signIn({username: '053steve', password: 'Hello1234!'}));
   };
 
   return (

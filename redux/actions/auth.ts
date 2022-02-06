@@ -9,11 +9,12 @@ export const signIn = (user: any) => {
     };
 };
 
-export const authenticated = (token: string) => {
+export const authenticated = (token: string, authUser) => {
     console.log("authenticated ", token)
     return {
         type: actionTypes.AUTHENTICATED,
         token,
+        authUser
     };
 };
 
