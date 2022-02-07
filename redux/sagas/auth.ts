@@ -6,8 +6,10 @@ import {
     authenticated,
     // signOutSuccess,
     // signUpSuccess,
-    showAuthMessage
+
 } from "../actions/auth";
+import {showAuthMessage} from '../actions/common';
+
 import axios from "axios";
 import ApiService from '../../services/api.service';
 
@@ -22,7 +24,7 @@ export function* signInWithEmail() {
 
             const authService = apiService.authService();
             const result = yield call(authService.auth, {username, password, authType: AuthType.Standard});
-            yield put(authenticated(result.token));
+            yield put(authenticated(result.token, result.user));
             yield put(showAuthMessage("Success"));
 
         } catch (error) {

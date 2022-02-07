@@ -1,8 +1,8 @@
 import {actionTypes} from '../constants/actions';
-import {AppState, SharedState} from "../../interfaces/data.interface";
+import {CommonState} from "../../interfaces/data.interface";
 import { AUTH_TOKEN } from '../../constants';
 
-const initState: SharedState = {
+const initState: CommonState = {
     loading: false,
     message: "",
     showMessage: false
@@ -10,7 +10,7 @@ const initState: SharedState = {
 
 
 
-const app = (state = initState, action: any): SharedState => {
+const common = (state = initState, action: any): CommonState => {
 
     switch (action.type) {
         case actionTypes.SHOW_AUTH_MESSAGE:
@@ -38,4 +38,4 @@ const app = (state = initState, action: any): SharedState => {
     }
 };
 
-export default app;
+export default common;

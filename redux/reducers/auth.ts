@@ -18,6 +18,7 @@ const auth = (state = initState, action: any): AuthState => {
                 ...state,
                 redirect: "/",
                 token: action.token,
+                authUser: action.authUser
             };
         case actionTypes.SIGNIN:
             return {

@@ -1,6 +1,6 @@
 
 export interface AppState {
-    shared: SharedState
+    common: CommonState
     auth: AuthState
 }
 
@@ -10,7 +10,7 @@ export interface AuthState {
     token?: string | null,
 }
 
-export interface SharedState {
+export interface CommonState {
     loading: boolean
     message?: string,
     showMessage: boolean
