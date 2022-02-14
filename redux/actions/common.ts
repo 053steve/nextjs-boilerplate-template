@@ -1,10 +1,21 @@
+import { ALERT_TYPE } from '../../interfaces/data.interface';
 import {actionTypes} from '../constants/actions';
 
 
-export const showAuthMessage = (message: string) => {
+export const showAlertMessage = (alertMsg: string, alertType: ALERT_TYPE) => {
     return {
         type: actionTypes.SHOW_AUTH_MESSAGE,
-        message,
+        alertMsg,
+        alertType
+    };
+};
+
+export const showErrorMessage = (alertMsg: string) => {
+
+    return {
+        type: actionTypes.SHOW_AUTH_MESSAGE,
+        alertMsg,
+        alertType: ALERT_TYPE.DANGER
     };
 };
 

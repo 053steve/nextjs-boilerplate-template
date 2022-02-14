@@ -10,8 +10,15 @@ export interface AuthState {
     token?: string | null,
 }
 
+export enum ALERT_TYPE {
+    SUCCESS = 'SUCCESS',
+    DANGER = 'DANGER'
+}
+
 export interface CommonState {
     loading: boolean
-    message?: string,
-    showMessage: boolean
+    alertMsg?: string,
+    alertType?: ALERT_TYPE,
+    showAlert: boolean,
+
 }

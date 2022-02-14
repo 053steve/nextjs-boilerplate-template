@@ -5,7 +5,7 @@ import { AUTH_TOKEN } from '../../constants';
 const initState: CommonState = {
     loading: false,
     message: "",
-    showMessage: false
+    showAlert: false
 };
 
 
@@ -16,15 +16,16 @@ const common = (state = initState, action: any): CommonState => {
         case actionTypes.SHOW_AUTH_MESSAGE:
             return {
                 ...state,
-                message: action.message,
-                showMessage: true,
+                alertMsg: action.alertMsg,
+                alertType: action.alertType,
+                showAlert: true,
                 loading: false,
             };
         case actionTypes.HIDE_AUTH_MESSAGE:
             return {
                 ...state,
-                message: "",
-                showMessage: false,
+                alertMsg: "",
+                showAlert: false,
             };
         case actionTypes.SHOW_LOADING: {
             return {

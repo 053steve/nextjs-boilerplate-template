@@ -8,10 +8,11 @@ import {
     // signUpSuccess,
 
 } from "../actions/auth";
-import {showAuthMessage} from '../actions/common';
+import {showAlertMessage, showErrorMessage} from '../actions/common';
 
 import axios from "axios";
 import ApiService from '../../services/api.service';
+import { ALERT_TYPE } from "../../interfaces/data.interface";
 
 const apiService = new ApiService();
 
@@ -25,10 +26,10 @@ export function* signInWithEmail() {
             const authService = apiService.authService();
             const result = yield call(authService.auth, {username, password, authType: AuthType.Standard});
             yield put(authenticated(result.token, result.user));
-            yield put(showAuthMessage("Success"));
+            yield put(showAlertMessage("Success", ALERT_TYPE.SUCCESS));
 
-        } catch (error) {
-            yield put(showAuthMessage(error));
+        } catch (error: any) {
+            yield put(showErrorMessage(error.message));
         }
     });
 }
