@@ -35,7 +35,6 @@ export function* signInWithEmail() {
 }
 
 export function* authenticateProcess() {
-    console.log('got here');
     yield takeEvery(actionTypes.AUTHENTICATED, function* ({payload}) {
         const token = payload;
         localStorage.setItem(AUTH_TOKEN, token);
