@@ -5,10 +5,12 @@ import {signIn} from '../redux/actions/auth';
 import {AppState} from "../interfaces/data.interface";
 import MainLayout from '../layouts/main-layout';
 import {useForm} from 'react-hook-form';
+import ApiService from '../services/api.service';
+
+const apiService = new ApiService();
 
 
 const Home = () => {
-
 
     const dispatch = useDispatch();
 
@@ -20,7 +22,6 @@ const Home = () => {
 
     const onSignin = (data): void => {
 
-        console.log(data)
         dispatch(signIn(data));
     };
 
