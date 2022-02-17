@@ -14,6 +14,7 @@ const auth = (state = initState, action: any): AuthState => {
 
     switch (action.type) {
         case actionTypes.AUTHENTICATED:
+            console.log(action);
             return {
                 ...state,
                 redirect: "/",

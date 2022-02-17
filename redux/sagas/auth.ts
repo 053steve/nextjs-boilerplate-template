@@ -9,8 +9,9 @@ import {
 
 } from "../actions/auth";
 import {showAlertMessage, showErrorMessage} from '../actions/common';
+import nookies from 'nookies';
+import { setCookie } from 'nookies'
 
-import axios from "axios";
 import ApiService from '../../services/api.service';
 import { ALERT_TYPE } from "../../interfaces/data.interface";
 
@@ -22,7 +23,6 @@ export function* signInWithEmail() {
         const { username, password } = payload;
 
         try {
-
             const authService = apiService.authService();
             const result = yield call(authService.auth, {username, password, authType: AuthType.Standard});
             yield put(authenticated(result.token, result.user));
@@ -35,9 +35,14 @@ export function* signInWithEmail() {
 }
 
 export function* authenticateProcess() {
-    yield takeEvery(actionTypes.AUTHENTICATED, function* ({payload}) {
-        const token = payload;
-        localStorage.setItem(AUTH_TOKEN, token);
+    yield takeEvery(actionTypes.AUTHENTICATED, function* ({ token }) {
+
+        // Set
+        setCookie(null, AUTH_TOKEN, token, {
+            maxAge: 30 * 24 * 60 * 60,
+            path: '/',
+        });
+
     });
 }
 
