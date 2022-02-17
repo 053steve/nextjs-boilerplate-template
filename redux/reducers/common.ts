@@ -4,7 +4,6 @@ import { AUTH_TOKEN } from '../../constants';
 
 const initState: CommonState = {
     loading: false,
-    message: "",
     showAlert: false
 };
 

@@ -36,6 +36,7 @@ const Dashboard = () => {
   )
 }
 
+Dashboard.requireAuth = true;
 Dashboard.getLayout = function getLayout(page) {
   return (
     <AdminLayout>
