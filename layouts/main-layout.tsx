@@ -1,4 +1,4 @@
-import Alert from '../components/alert';
+import Alert from '../components/Alert';
 
 export default function MainLayout({children}) {
     return (

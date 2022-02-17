@@ -9,9 +9,8 @@ import {
 
 } from "../actions/auth";
 import {showAlertMessage, showErrorMessage} from '../actions/common';
-import nookies from 'nookies';
+import Router from 'next/router'
 import { setCookie } from 'nookies'
-
 import ApiService from '../../services/api.service';
 import { ALERT_TYPE } from "../../interfaces/data.interface";
 
@@ -27,7 +26,7 @@ export function* signInWithEmail() {
             const result = yield call(authService.auth, {username, password, authType: AuthType.Standard});
             yield put(authenticated(result.token, result.user));
             yield put(showAlertMessage("Success", ALERT_TYPE.SUCCESS));
-
+            Router.push('/dashboard');
         } catch (error: any) {
             yield put(showErrorMessage(error.message));
         }
@@ -39,10 +38,9 @@ export function* authenticateProcess() {
 
         // Set
         setCookie(null, AUTH_TOKEN, token, {
-            maxAge: 30 * 24 * 60 * 60,
+            maxAge: 24 * 60 * 60 * 1000, // 24 hours
             path: '/',
         });
-
     });
 }
 

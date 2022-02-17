@@ -1,28 +1,29 @@
 import type { NextPage } from 'next'
 import AdminLayout from '../layouts/admin-layout';
-import nookies from 'nookies'
+// import nookies from 'nookies'
 
 
-export const getServerSideProps = async function (ctx) {
-    // Parse
-    const cookies = nookies.get(ctx)
-
-    const {auth_token} = cookies;
-
-    if (auth_token) {
-        return {
-            redirect: {
-                destination: '/',
-                permanent: false,
-            },
-        }
-    }
-
-    return {
-        props: {}
-    }
-
-}
+// [example] check user token before rendering page, if not then redirect to login (which is not recommended)
+// export const getServerSideProps = async function (ctx) {
+//
+//     const cookies = nookies.get(ctx)
+//
+//     const {auth_token} = cookies;
+//
+//     if (!auth_token) {
+//         return {
+//             redirect: {
+//                 destination: '/',
+//                 permanent: false,
+//             },
+//         }
+//     }
+//
+//     return {
+//         props: {}
+//     }
+//
+// }
 
 
 const Dashboard = () => {
