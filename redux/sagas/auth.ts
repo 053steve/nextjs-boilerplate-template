@@ -1,6 +1,6 @@
 import { all, takeEvery, put, fork, call } from "redux-saga/effects";
 import {actionTypes} from '../constants/actions'
-import {AUTH_TOKEN} from '../../constants';
+import {AUTH_TOKEN, COOKIE_SETTINGS} from '../../constants';
 import {AuthType, AuthApiFactory, AuthPayload} from '../../client/api';
 import {
     authenticated,
@@ -35,12 +35,8 @@ export function* signInWithEmail() {
 
 export function* authenticateProcess() {
     yield takeEvery(actionTypes.AUTHENTICATED, function* ({ token }) {
-
         // Set
-        setCookie(null, AUTH_TOKEN, token, {
-            maxAge: 24 * 60 * 60 * 1000, // 24 hours
-            path: '/',
-        });
+        setCookie(null, AUTH_TOKEN, token, COOKIE_SETTINGS);
     });
 }
 
