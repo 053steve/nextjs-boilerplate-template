@@ -3,7 +3,7 @@ import {requestInterceptor, responseInterceptor, errrorInterceptor} from '../mid
 
 class HttpService {
 
-    instance: any;
+    public instance: any;
 
     constructor() {
         this.setupInstance();
