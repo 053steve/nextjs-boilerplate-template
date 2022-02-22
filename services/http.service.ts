@@ -11,8 +11,6 @@ class HttpService {
 
     setupInstance() {
         this.instance = axios.create();
-
-
         this.instance.interceptors.request.use(requestInterceptor, errrorInterceptor);
         this.instance.interceptors.response.use(responseInterceptor, errrorInterceptor);
 
