@@ -1,16 +1,15 @@
 import type {NextPage} from 'next'
-import {FormEvent} from "react";
-import {useSelector, useDispatch} from 'react-redux';
-import {signIn} from '../redux/actions/auth';
+import {FormEvent, useEffect } from "react";
 import {AppState} from "../interfaces/data.interface";
 import MainLayout from '../layouts/main-layout';
 import {useForm} from 'react-hook-form';
+import {login} from '../services/auth.service';
+import {useGetUser} from '../client/api'
+import Router from "next/router";
+
 
 
 const Home = () => {
-
-
-    const dispatch = useDispatch();
 
     const {
         register,
@@ -18,10 +17,20 @@ const Home = () => {
         formState: {errors},
     } = useForm();
 
-    const onSignin = (data): void => {
 
-        console.log(data)
-        dispatch(signIn(data));
+
+    const {data, error} = useGetUser('1');
+    const user = data;
+
+    useEffect(() => {
+        if (user) {
+            Router.replace("/dashboard");
+        }
+    }, [user]);
+
+
+    const onSignin = async (data) => {
+        await login({...data, authType: 'STANDARD'});
     };
 
     return (

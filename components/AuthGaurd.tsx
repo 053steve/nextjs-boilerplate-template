@@ -1,4 +1,4 @@
-import {useSelector, useDispatch} from 'react-redux';
+
 import {AppState} from '../interfaces/data.interface';
 import { useRouter } from "next/router"
 import { useEffect } from "react"

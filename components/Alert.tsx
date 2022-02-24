@@ -1,5 +1,5 @@
 import React from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+
 import {ALERT_TYPE, CommonState} from '../interfaces/data.interface';
 
 // should be able to change color or mode, success and fail

@@ -2,7 +2,6 @@ import '../styles/globals.css'
 import type {AppProps} from 'next/app'
 import type {ReactElement, ReactNode} from 'react'
 import type {NextPage} from 'next'
-import {wrapper} from '../redux/store';
 import {AuthGaurd} from '../components/AuthGaurd';
 
 type NextPageWithLayout = NextPage & {
@@ -22,12 +21,12 @@ function App({Component, pageProps}: AppPropsWithLayout) {
     return getLayout(
         Component.requireAuth ?
 
-                <AuthGaurd>
+                // <AuthGaurd>
                     <Component {...pageProps} />
-                </AuthGaurd>
+                // </AuthGaurd>
             :
             <Component {...pageProps} />
     )
 }
 
-export default wrapper.withRedux(App)
+export default App;
