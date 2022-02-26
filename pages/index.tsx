@@ -7,6 +7,8 @@ import {login} from '../services/auth.service';
 import {useGetUser} from '../client/api'
 import Router from "next/router";
 
+import {parseCookies} from 'nookies'
+
 
 
 const Home = () => {
@@ -18,8 +20,12 @@ const Home = () => {
     } = useForm();
 
 
+    const cookies = parseCookies();
 
-    const {data, error} = useGetUser('1');
+    const {auth_user} = cookies;
+
+
+    const {data, error} = useGetUser(auth_user);
     const user = data;
 
     useEffect(() => {
@@ -29,8 +35,15 @@ const Home = () => {
     }, [user]);
 
 
+
     const onSignin = async (data) => {
-        await login({...data, authType: 'STANDARD'});
+        try {
+            await login({...data, authType: 'STANDARD'});
+            Router.replace("/dashboard");
+        } catch (err) {
+            console.log(err);
+        }
+
     };
 
     return (
