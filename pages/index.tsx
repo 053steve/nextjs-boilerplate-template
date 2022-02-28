@@ -22,11 +22,13 @@ const Home = () => {
 
 
     const cookies = parseCookies();
-    const {auth_user} = cookies;
+    const {auth_user} = cookies; // auth user contains user id
     const authState: any = useAuth();
     const globalState: any = useGlobal();
 
 
+    //Call to get user detail using swr to check if already loggedin
+    // in real world scenario calling this for login redirect is an overkill
     const {data, error} = useGetUser(auth_user);
     const user = data;
 
