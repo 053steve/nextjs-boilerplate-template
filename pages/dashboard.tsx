@@ -1,5 +1,8 @@
 import type { NextPage } from 'next'
 import AdminLayout from '../layouts/admin-layout';
+import {logout} from '../services/auth.service';
+import {useAuth} from '../context/auth-context';
+import Router from "next/router";
 // import nookies from 'nookies'
 
 
@@ -26,11 +29,23 @@ import AdminLayout from '../layouts/admin-layout';
 // }
 
 
+
 const Dashboard = () => {
+
+    const authState: any = useAuth();
+
+    const logoutEvent = () => {
+        logout();
+        authState.dispatch({authenticated: false, user: null});
+        Router.replace("/");
+    }
+
   return (
     <div>
       <h1 className="text-3xl font-bold underline">
             Dashboard
+
+          <button type="button" className="rounded-md" onClick={logoutEvent}>Logout Press Here</button>
         </h1>
     </div>
   )

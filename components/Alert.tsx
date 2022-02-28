@@ -1,6 +1,7 @@
 import React from 'react';
+import {useGlobal} from '../context/global-context';
 
-import {ALERT_TYPE, CommonState} from '../interfaces/data.interface';
+import {ALERT_TYPE} from '../interfaces/data.interface';
 
 // should be able to change color or mode, success and fail
 // should be able to close
@@ -8,9 +9,8 @@ import {ALERT_TYPE, CommonState} from '../interfaces/data.interface';
 
 const Alert: React.FC = () => {
 
-    const common = useSelector((state): CommonState => state.common);
 
-    const {alertMsg, loading, showAlert, alertType} = common;
+    const { state: { alertMsg, showAlert, alertType } } = useGlobal();
 
     const alertColors = {
         'SUCCESS': {

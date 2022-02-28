@@ -4,6 +4,8 @@ import type {ReactElement, ReactNode} from 'react'
 import type {NextPage} from 'next'
 import {AuthGaurd} from '../components/AuthGaurd';
 
+
+
 type NextPageWithLayout = NextPage & {
     getLayout?: (page: ReactElement) => ReactNode
 }
@@ -21,9 +23,9 @@ function App({Component, pageProps}: AppPropsWithLayout) {
     return getLayout(
         Component.requireAuth ?
 
-                // <AuthGaurd>
+                <AuthGaurd>
                     <Component {...pageProps} />
-                // </AuthGaurd>
+                </AuthGaurd>
             :
             <Component {...pageProps} />
     )

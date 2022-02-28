@@ -1,13 +1,14 @@
 import type {NextPage} from 'next'
 import {FormEvent, useEffect } from "react";
-import {AppState} from "../interfaces/data.interface";
+import {ALERT_TYPE, AppState} from "../interfaces/data.interface";
 import MainLayout from '../layouts/main-layout';
 import {useForm} from 'react-hook-form';
 import {login} from '../services/auth.service';
 import {useGetUser} from '../client/api'
 import Router from "next/router";
-
+import {useAuth} from '../context/auth-context';
 import {parseCookies} from 'nookies'
+import { useGlobal } from '../context/global-context';
 
 
 
@@ -21,8 +22,9 @@ const Home = () => {
 
 
     const cookies = parseCookies();
-
     const {auth_user} = cookies;
+    const authState: any = useAuth();
+    const globalState: any = useGlobal();
 
 
     const {data, error} = useGetUser(auth_user);
@@ -38,8 +40,16 @@ const Home = () => {
 
     const onSignin = async (data) => {
         try {
-            await login({...data, authType: 'STANDARD'});
-            Router.replace("/dashboard");
+            const {user, token} = await login({...data, authType: 'STANDARD'});
+            authState.dispatch({authenticated: true, user});
+            globalState.dispatch({
+                alertMsg: 'Login Success',
+                loading: false,
+                showAlert: true,
+                alertType: ALERT_TYPE.SUCCESS
+            });
+            setTimeout(() => Router.replace("/dashboard"), 2000);
+
         } catch (err) {
             console.log(err);
         }
