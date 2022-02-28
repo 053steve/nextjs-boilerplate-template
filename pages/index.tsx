@@ -1,6 +1,6 @@
 import type {NextPage} from 'next'
 import {FormEvent, useEffect } from "react";
-import {ALERT_TYPE, AppState} from "../interfaces/data.interface";
+import {ALERT_TYPE} from "../interfaces/data.interface";
 import MainLayout from '../layouts/main-layout';
 import {useForm} from 'react-hook-form';
 import {login} from '../services/auth.service';
