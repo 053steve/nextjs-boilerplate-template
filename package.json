@@ -6,7 +6,8 @@
     "build": "next build",
     "start": "next start -p 4200",
     "lint": "next lint",
-    "build:client:local": "rm -rf ./client && orval --config ./orval.config.js"
+    "build:client:local": "rm -rf ./client && orval --config ./orval.config.js",
+    "remove-serverless": "sh ./shell/remove-serverless.sh"
   },
   "dependencies": {
     "axios": "^0.25.0",
