@@ -39,5 +39,5 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
-
+.serverless_nextjs
 .idea
