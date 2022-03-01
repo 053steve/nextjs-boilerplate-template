@@ -7,7 +7,8 @@ import {AuthGaurd} from '../components/AuthGaurd';
 
 
 type NextPageWithLayout = NextPage & {
-    getLayout?: (page: ReactElement) => ReactNode
+    getLayout?: (page: ReactElement) => ReactNode,
+    requireAuth?: boolean
 }
 
 type AppPropsWithLayout = AppProps & {

@@ -10,9 +10,10 @@ import {ALERT_TYPE} from '../interfaces/data.interface';
 const Alert: React.FC = () => {
 
 
-    const { state: { alertMsg, showAlert, alertType } } = useGlobal();
+    const global: any = useGlobal();
+    const { alertMsg, showAlert, alertType } = global.state;
 
-    const alertColors = {
+    const alertColors: any = {
         'SUCCESS': {
             bg: 'bg-green-100',
             border: 'border-green-400',
@@ -30,7 +31,7 @@ const Alert: React.FC = () => {
     let alertTab;
 
     if (showAlert && alertType) {
-        alertTab = <div className={`${alertColors[alertType].bg}  border ${alertColors[alertType].border} ${alertColors[alertType].textColor} px-4 py-3 rounded relative`}
+        alertTab = <div className={`${alertColors[alertType].bg} border ${alertColors[alertType].border} ${alertColors[alertType].textColor} px-4 py-3 rounded relative`}
              role="alert">
             <strong className="font-bold">Holy smokes!</strong>
             <span className="block sm:inline">{alertMsg}</span>

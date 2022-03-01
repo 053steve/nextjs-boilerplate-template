@@ -16,7 +16,8 @@ function reducer(state, action) {
     return { ...state, ...action };
 }
 
-const AuthContext = createContext(undefined);
+
+const AuthContext: any = createContext(undefined);
 
 export function AuthProvider({ children }) {
 

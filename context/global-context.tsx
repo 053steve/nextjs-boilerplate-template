@@ -20,7 +20,7 @@ function reducer(state, action) {
 }
 
 
-const GlobalContext = createContext(undefined);
+const GlobalContext: any = createContext(undefined);
 
 
 export function GlobalProvider({ children }) {

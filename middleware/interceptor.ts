@@ -14,7 +14,7 @@ export const requestInterceptor = (config: any) => {
 }
 
 export const responseInterceptor = (response: any) => {
-    console.log(response);
+
     if (response?.status === 200 || response?.status === 201) {
         return response;
     }

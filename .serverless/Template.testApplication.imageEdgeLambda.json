@@ -1,0 +1,17 @@
+{
+  "name": "da1xuzr-thh42y",
+  "hash": "LjYt7LaJCO6xCWNuYNUuBOOBGen4w3b/lcAMG9uJBO4=",
+  "description": "Image Lambda@Edge for Next CloudFront distribution",
+  "memory": 512,
+  "timeout": 10,
+  "code": "/Users/jirateepsuranant/Projects/nextjs-boilerplate-template/.serverless_nextjs/image-lambda",
+  "shims": [],
+  "handler": "index.handler",
+  "runtime": "nodejs12.x",
+  "env": {},
+  "role": {
+    "arn": "arn:aws:iam::865762288280:role/da1xuzr-f68rpe"
+  },
+  "arn": "arn:aws:lambda:us-east-1:865762288280:function:da1xuzr-thh42y",
+  "region": "us-east-1"
+}

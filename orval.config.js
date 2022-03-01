@@ -6,7 +6,7 @@ module.exports = {
       target: 'client/api.ts',
       schemas: 'client/model',
       client: 'swr',
-      mock: true,
+      mock: false,
       override: {
         mutator: {
           path: 'mutator/custom-instance.ts',
